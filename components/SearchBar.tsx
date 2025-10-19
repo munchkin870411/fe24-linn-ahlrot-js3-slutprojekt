@@ -2,13 +2,8 @@
 
 import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { SearchBarProps } from '@/types/props';
 import styles from './SearchBar.module.css';
-
-interface SearchBarProps {
-  onSearch?: (query: string) => void;
-  placeholder?: string;
-  className?: string;
-}
 
 export default function SearchBar({ 
   onSearch, 

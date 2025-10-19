@@ -1,6 +1,7 @@
 import React from "react";
 import CountriesList from "../components/CountriesList";
 import SearchBar from "../components/SearchBar";
+import RegionFilter from "../components/RegionFilter";
 import styles from "./page.module.css";
 
 const HomePage = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
         <div className={styles.searchWrapper}>
           <SearchBar />
         </div>
+        <RegionFilter />
         <CountriesList />
       </main>
     </div>

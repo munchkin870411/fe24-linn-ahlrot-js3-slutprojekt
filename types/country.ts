@@ -31,3 +31,9 @@ export interface CountriesResponse {
   pageSize: number;
   totalPages: number;
 }
+
+// Region type for filter buttons
+export interface Region {
+  value: string;
+  label: string;
+}
