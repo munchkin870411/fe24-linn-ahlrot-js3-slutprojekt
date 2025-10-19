@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCountries } from '../lib/services/countriesService';
+import styles from './CountriesList.module.css';
 
 const CountriesList: React.FC = () => {
   const router = useRouter();
@@ -58,55 +59,65 @@ const CountriesList: React.FC = () => {
   }
 
   if (!data || !data.countries.length) {
+    const isSearching = search && search.trim().length > 0;
     return (
-      <div>
-        <p>No countries found.</p>
+      <div className={styles.noResults}>
+        {isSearching ? (
+          <p>No countries found for &ldquo;{search}&rdquo;.</p>
+        ) : (
+          <p>No countries found.</p>
+        )}
       </div>
     );
   }
 
   return (
-    <div>
-      <ul>
+    <div className={styles.countriesList}>
+      <div className={styles.countriesGrid}>
         {data.countries.map((country) => (
-          <li key={country.cca3}>
+          <div key={country.cca3} className={styles.countryCard}>
             <Image 
               src={country.flags.png} 
               alt={`Flag of ${country.name.common}`} 
               width={50} 
-              height={30} 
+              height={32} 
+              className={styles.countryFlag}
             />
-            <p>{country.name.common}</p>
-            <p>Region: {country.region}</p>
-            {country.capital && <p>Capital: {country.capital.join(', ')}</p>}
-          </li>
+            <div className={styles.countryContent}>
+              <h3 className={styles.countryName}>{country.name.common}</h3>
+              <p className={styles.countryInfo}>Region: {country.region}</p>
+              {country.capital && (
+                <p className={styles.countryInfo}>Capital: {country.capital.join(', ')}</p>
+              )}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
 
-      <div className="pagination">
-        <div className="pagination-info">
+      <div className={styles.pagination}>
+        <div className={styles.paginationInfo}>
           <p>
             Sida {data.page} av {data.totalPages} ({data.total} länder totalt)
           </p>
         </div>
         
-        <div className="pagination-buttons">
+        <div className={styles.paginationButtons}>
           <button 
             onClick={handlePrevious}
             disabled={page <= 1}
-            className="pagination-btn"
+            className={styles.paginationBtn}
           >
             ← Föregående
           </button>
           
-          <span className="page-indicator">
+          <span className={styles.pageIndicator}>
             {data.page} / {data.totalPages}
           </span>
           
           <button 
             onClick={handleNext}
             disabled={page >= data.totalPages}
-            className="pagination-btn"
+            className={styles.paginationBtn}
           >
             Nästa →
           </button>

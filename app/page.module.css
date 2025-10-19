@@ -30,9 +30,25 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   grid-row-start: 2;
   padding: 16px;
+  width: 100%;
+  max-width: 1200px;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  color: var(--foreground);
+  margin-bottom: 0;
+}
+
+.searchWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
 }
 
 .main ol {
