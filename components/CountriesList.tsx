@@ -7,6 +7,7 @@ import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCountries } from '../lib/services/countriesService';
 import Pagination from './Pagination';
+import LoadingSpinner from './LoadingSpinner';
 import styles from './CountriesList.module.css';
 
 const CountriesList: React.FC = () => {
@@ -26,9 +27,10 @@ const CountriesList: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div>
-        <p>Loading countries...</p>
-      </div>
+      <LoadingSpinner 
+        message="Laddar länder..." 
+        size="large" 
+      />
     );
   }
 

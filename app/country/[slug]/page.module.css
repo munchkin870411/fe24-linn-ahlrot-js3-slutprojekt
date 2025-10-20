@@ -1,0 +1,29 @@
+/* Country Page Styles - Same structure as homepage */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.main {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 0.5rem;
+  }
+  
+  .main {
+    gap: 1.5rem;
+  }
+}
