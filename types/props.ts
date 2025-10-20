@@ -1,6 +1,7 @@
 // Component Props Types
 
 import { Country, WikipediaPageSummary } from './country';
+import { WeatherData } from './weather';
 
 export interface SearchBarProps {
   onSearch?: (query: string) => void;
@@ -50,5 +51,13 @@ export interface ErrorDisplayProps {
   countryCode?: string;
   onRetry?: () => void;
   onGoBack?: () => void;
+  className?: string;
+}
+
+/**
+ * WeatherDisplay component props
+ */
+export interface WeatherDisplayProps {
+  weather: WeatherData | null;
   className?: string;
 }

@@ -1,6 +1,8 @@
 import { fetchCountries } from './countriesService';
 import { fetchCountryWikipedia } from './wikipediaService';
+import { fetchWeatherForCountry } from './weatherService';
 import { Country, WikipediaPageSummary } from '@/types/country';
+import { WeatherData } from '@/types/weather';
 import { ServerCountryData } from '@/types/api';
 
 export async function fetchCountryServerSide(
@@ -27,7 +29,19 @@ export async function fetchCountryServerSide(
       console.warn(`Wikipedia unavailable for ${country.name.common}`);
     }
 
-    return { country, wikipedia };
+    // Weather data (optional)
+    let weather: WeatherData | null = null;
+    try {
+      const capitalName = country.capital?.[0] || country.name.common;
+      const countryName = country.name.common;
+      const coordinates = country.latlng;
+      
+      weather = await fetchWeatherForCountry(capitalName, countryName, coordinates);
+    } catch {
+      console.warn(`Weather unavailable for ${country.name.common}`);
+    }
+
+    return { country, wikipedia, weather };
   } catch (error) {
     console.error('Server error:', error);
     return null;

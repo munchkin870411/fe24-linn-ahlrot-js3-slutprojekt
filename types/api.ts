@@ -1,4 +1,5 @@
 import { Country, WikipediaPageSummary } from './country';
+import { WeatherData } from './weather';
 
 /**
  * Response interface for country API endpoint
@@ -16,6 +17,7 @@ export interface CountryApiResponse {
 export interface ServerCountryData {
   country: Country;
   wikipedia: WikipediaPageSummary | null;
+  weather: WeatherData | null;
 }
 
 /**
