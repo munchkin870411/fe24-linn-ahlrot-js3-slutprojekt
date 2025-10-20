@@ -23,6 +23,14 @@
   justify-items: center;
 }
 
+.countryCardLink {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  text-decoration: none;
+  color: inherit;
+}
+
 .countryCard {
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -30,16 +38,23 @@
   background: var(--background);
   transition: transform 0.2s, box-shadow 0.2s;
   width: 100%;
-  max-width: 240px;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   text-align: left;
+  cursor: pointer;
 }
 
 .countryCard:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.countryCardLink:focus .countryCard {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  outline: 2px solid #0070f3;
+  outline-offset: 2px;
 }
 
 .countryFlag {
@@ -80,53 +95,7 @@
   white-space: nowrap;
 }
 
-/* Pagination Styles */
-.pagination {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  width: 100%;
-}
 
-.paginationInfo p {
-  color: var(--foreground);
-  font-size: 14px;
-  margin: 0;
-}
-
-.paginationButtons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.paginationBtn {
-  padding: 8px 16px;
-  border: 1px solid var(--border, #e5e5e5);
-  border-radius: 4px;
-  background: var(--background);
-  color: var(--foreground);
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s;
-}
-
-.paginationBtn:hover:not(:disabled) {
-  background: var(--border-hover, #d4d4d4);
-}
-
-.paginationBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.pageIndicator {
-  padding: 8px 12px;
-  font-weight: 500;
-  color: var(--foreground);
-}
 
 @media (max-width: 768px) {
   .countriesGrid {
@@ -134,8 +103,11 @@
     gap: 0.75rem;
   }
   
-  .countryCard {
+  .countryCardLink {
     max-width: none;
+  }
+  
+  .countryCard {
     padding: 0.5rem;
     gap: 0.5rem;
   }

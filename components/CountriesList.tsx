@@ -2,13 +2,14 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCountries } from '../lib/services/countriesService';
+import Pagination from './Pagination';
 import styles from './CountriesList.module.css';
 
 const CountriesList: React.FC = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
   
   const page = parseInt(searchParams.get('page') || '1', 10);
@@ -22,24 +23,6 @@ const CountriesList: React.FC = () => {
     staleTime: 5 * 60 * 1000,
     retry: 3,
   });
-
-  const navigateToPage = (newPage: number) => {
-    const params = new URLSearchParams(searchParams);
-    params.set('page', newPage.toString());
-    router.push(`/?${params.toString()}`);
-  };
-
-  const handlePrevious = () => {
-    if (page > 1) {
-      navigateToPage(page - 1);
-    }
-  };
-
-  const handleNext = () => {
-    if (data && page < data.totalPages) {
-      navigateToPage(page + 1);
-    }
-  };
 
   if (isLoading) {
     return (
@@ -75,54 +58,36 @@ const CountriesList: React.FC = () => {
     <div className={styles.countriesList}>
       <div className={styles.countriesGrid}>
         {data.countries.map((country) => (
-          <div key={country.cca3} className={styles.countryCard}>
-            <Image 
-              src={country.flags.png} 
-              alt={`Flag of ${country.name.common}`} 
-              width={50} 
-              height={32} 
-              className={styles.countryFlag}
-            />
-            <div className={styles.countryContent}>
-              <h3 className={styles.countryName}>{country.name.common}</h3>
-              <p className={styles.countryInfo}>Region: {country.region}</p>
-              {country.capital && (
-                <p className={styles.countryInfo}>Capital: {country.capital.join(', ')}</p>
-              )}
+          <Link 
+            key={country.cca3} 
+            href={`/country/${country.cca3.toLowerCase()}`}
+            className={styles.countryCardLink}
+          >
+            <div className={styles.countryCard}>
+              <Image 
+                src={country.flags.png} 
+                alt={`Flag of ${country.name.common}`} 
+                width={50} 
+                height={32} 
+                className={styles.countryFlag}
+              />
+              <div className={styles.countryContent}>
+                <h3 className={styles.countryName}>{country.name.common}</h3>
+                <p className={styles.countryInfo}>Region: {country.region}</p>
+                {country.capital && (
+                  <p className={styles.countryInfo}>Capital: {country.capital.join(', ')}</p>
+                )}
+              </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
-      <div className={styles.pagination}>
-        <div className={styles.paginationInfo}>
-          <p>
-            Sida {data.page} av {data.totalPages} ({data.total} länder totalt)
-          </p>
-        </div>
-        
-        <div className={styles.paginationButtons}>
-          <button 
-            onClick={handlePrevious}
-            disabled={page <= 1}
-            className={styles.paginationBtn}
-          >
-            ← Föregående
-          </button>
-          
-          <span className={styles.pageIndicator}>
-            {data.page} / {data.totalPages}
-          </span>
-          
-          <button 
-            onClick={handleNext}
-            disabled={page >= data.totalPages}
-            className={styles.paginationBtn}
-          >
-            Nästa →
-          </button>
-        </div>
-      </div>
+      <Pagination
+        currentPage={data.page}
+        totalPages={data.totalPages}
+        totalItems={data.total}
+      />
     </div>
   );
 };
