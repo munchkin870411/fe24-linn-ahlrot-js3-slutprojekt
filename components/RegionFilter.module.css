@@ -22,35 +22,36 @@
 }
 
 .filterButton {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border: 2px solid var(--border);
-  border-radius: 20px;
-  background: var(--background);
+  border-radius: 25px;
+  background: var(--card-bg);
   color: var(--foreground);
   cursor: pointer;
   font-size: 0.875rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
   white-space: nowrap;
   min-width: fit-content;
+  box-shadow: 0 3px 8px var(--card-shadow);
 }
 
 .filterButton:hover {
-  border-color: #0070f3;
-  background: rgba(0, 112, 243, 0.05);
-  transform: translateY(-1px);
+  border-color: var(--primary);
+  background: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 122, 89, 0.3);
 }
 
 .filterButton.active {
-  border-color: #0070f3;
-  background: #0070f3;
-  color: white;
-  box-shadow: 0 2px 8px rgba(0, 112, 243, 0.3);
+  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.4);
 }
 
 .filterButton.active:hover {
-  background: #0051cc;
-  border-color: #0051cc;
+  background: #ff7300;
+  border-color: #cc3300;
   transform: translateY(-1px);
 }
 

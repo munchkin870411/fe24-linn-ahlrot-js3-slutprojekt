@@ -39,7 +39,7 @@ export default function SearchBar({
     // Reset everything to default state - remove all search params except pageSize
     const params = new URLSearchParams();
     const currentPageSize = searchParams.get('pageSize');
-    if (currentPageSize && currentPageSize !== '10') {
+    if (currentPageSize && currentPageSize !== '7') {
       params.set('pageSize', currentPageSize);
     }
     params.set('page', '1');

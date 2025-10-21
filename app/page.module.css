@@ -1,40 +1,43 @@
 .page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+  --warm-orange: rgba(255, 122, 89, 0.1);
+  --warm-teal: rgba(79, 209, 199, 0.1);
+  --warm-accent: rgba(255, 167, 38, 0.1);
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
+  --button-primary-hover: var(--primary);
+  --button-secondary-hover: var(--secondary);
 
   display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
   justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
+  min-height: 100vh;
+  padding: 20px;
+  gap: 20px;
   font-family: var(--font-geist-sans);
+  background: linear-gradient(135deg, var(--background) 0%, #fef7f0 100%);
 }
 
 @media (prefers-color-scheme: dark) {
   .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
+    --warm-orange: rgba(255, 122, 89, 0.2);
+    --warm-teal: rgba(79, 209, 199, 0.2);
+    --warm-accent: rgba(255, 167, 38, 0.2);
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
+    --button-primary-hover: var(--primary-light);
+    --button-secondary-hover: var(--secondary-light);
+    
+    background: linear-gradient(135deg, var(--background) 0%, #2a3441 100%);
   }
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   grid-row-start: 2;
-  padding: 16px;
+  padding: 10px;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   align-items: center;
 }
 
@@ -42,6 +45,13 @@
   text-align: center;
   color: var(--foreground);
   margin-bottom: 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-shadow: 0 2px 4px rgba(255, 122, 89, 0.1);
 }
 
 .searchWrapper {

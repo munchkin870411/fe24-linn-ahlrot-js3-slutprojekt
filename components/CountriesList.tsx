@@ -14,7 +14,7 @@ const CountriesList: React.FC = () => {
   const searchParams = useSearchParams();
   
   const page = parseInt(searchParams.get('page') || '1', 10);
-  const pageSize = parseInt(searchParams.get('pageSize') || '10', 10);
+  const pageSize = parseInt(searchParams.get('pageSize') || '7', 10);
   const search = searchParams.get('search') || undefined;
   const region = searchParams.get('region') || undefined;
 

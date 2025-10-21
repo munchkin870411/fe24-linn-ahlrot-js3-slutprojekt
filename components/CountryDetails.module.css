@@ -12,20 +12,21 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  background: var(--background);
-  border: 2px solid var(--border);
-  border-radius: 8px;
-  color: var(--foreground);
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  border: 2px solid var(--primary);
+  border-radius: 25px;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
 }
 
 .backButton:hover {
-  border-color: #0070f3;
-  background: rgba(0, 112, 243, 0.05);
-  transform: translateY(-1px);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 122, 89, 0.4);
 }
 
 .content {
