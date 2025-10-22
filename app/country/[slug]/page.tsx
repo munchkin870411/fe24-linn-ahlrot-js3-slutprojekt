@@ -27,14 +27,14 @@ const CountryPage = async ({ params }: CountryPageProps) => {
               country={countryData.country} 
               wikipediaData={countryData.wikipedia}
             />
-            <CountryGallery 
-              countryName={countryData.country.name.common}
-              photos={countryData.photos} 
-            />
           </div>
           
           <div className={styles.weatherSection}>
             <WeatherDisplay weather={countryData.weather} />
+            <CountryGallery 
+              countryName={countryData.country.name.common}
+              photos={countryData.photos} 
+            />
           </div>
         </div>
       </main>
