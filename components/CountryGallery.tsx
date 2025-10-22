@@ -45,9 +45,10 @@ export default function CountryGallery({ countryName }: CountryGalleryProps) {
     return (
       <div className={styles.gallerySection}>
         <h3 className={styles.galleryTitle}>Bilder från {countryName}</h3>
-        <div className={styles.loading}>
-          <div className={styles.loadingSpinner}></div>
-          <p>Laddar bilder...</p>
+        <div className={styles.skeletonGrid}>
+          {[1, 2, 3].map((index) => (
+            <div key={index} className={styles.photoSkeleton}></div>
+          ))}
         </div>
       </div>
     );
