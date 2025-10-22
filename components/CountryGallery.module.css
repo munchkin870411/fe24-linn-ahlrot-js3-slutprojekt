@@ -1,0 +1,147 @@
+/* Country Gallery Styles - Mobile First */
+
+.gallerySection {
+  margin-top: 2rem;
+  padding: 1.5rem 1rem;
+  background: var(--card-background, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.galleryTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border);
+  border-left-color: var(--primary-light);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.noPhotos {
+  text-align: center;
+  padding: 2rem;
+  color: var(--foreground);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.photoCard {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--background);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.photoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.photoLink {
+  display: block;
+  position: relative;
+  text-decoration: none;
+}
+
+.photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.photoCard:hover .photo {
+  transform: scale(1.05);
+}
+
+.photoOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.photoCard:hover .photoOverlay {
+  opacity: 1;
+}
+
+.photoCredit {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Tablet Breakpoint (768px+) */
+@media (min-width: 768px) {
+  .gallerySection {
+    padding: 2rem;
+    grid-column: 1 / -1;
+  }
+
+  .galleryTitle {
+    font-size: 1.8rem;
+    text-align: left;
+  }
+
+  .photoGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Desktop Breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .gallerySection {
+    padding: 3rem;
+  }
+
+  .photoGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .photo {
+    aspect-ratio: 16/10;
+  }
+}

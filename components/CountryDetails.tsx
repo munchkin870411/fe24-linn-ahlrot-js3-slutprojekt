@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { CountryDetailsComponentProps } from '@/types/props';
 import LoadingSpinner from './LoadingSpinner';
+import CountryGallery from './CountryGallery';
 import styles from './CountryDetails.module.css';
 
 export default function CountryDetails({ country, wikipediaData }: CountryDetailsComponentProps) {
@@ -175,6 +176,9 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
           </div>
         )}
       </div>
+
+      {/* Country Gallery Section */}
+      <CountryGallery countryName={country.name.common} />
     </div>
   );
 }
