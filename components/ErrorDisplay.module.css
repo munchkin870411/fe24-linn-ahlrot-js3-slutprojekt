@@ -55,8 +55,8 @@
 
 .retryButton {
   padding: 0.75rem 1.5rem;
-  background-color: #0070f3;
-  color: white;
+  background-color: var(--accent-light);
+  color: var(--foreground);
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -65,14 +65,14 @@
 }
 
 .retryButton:hover {
-  background-color: #005bb5;
+  background-color: var(--accent);
 }
 
 .backButton {
   padding: 0.75rem 1.5rem;
   background-color: transparent;
-  color: #0070f3;
-  border: 2px solid #0070f3;
+  color: var(--accent-light);
+  border: 2px solid var(--accent-light);
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
@@ -80,6 +80,6 @@
 }
 
 .backButton:hover {
-  background-color: #0070f3;
-  color: white;
+  background-color: var(--accent-light);
+  color: var(--foreground);
 }

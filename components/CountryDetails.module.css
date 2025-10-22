@@ -1,7 +1,8 @@
-/* Country Details Styles */
+/* Country Details Styles - Mobile First */
 .countryDetails {
   width: 100%;
   min-height: auto;
+  padding: 0.75rem;
 }
 
 .header {
@@ -12,38 +13,37 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--accent), var(--primary));
-  border: 2px solid var(--primary);
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(135deg, var(--accent-light), var(--primary-light));
+  border: 2px solid var(--primary-light);
   border-radius: 25px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(255, 122, 89, 0.3);
+  box-shadow: 0 4px 12px rgba(255, 204, 128, 0.3);
+  font-size: 0.9rem;
 }
 
 .backButton:hover {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  border-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
+  border-color: var(--primary-light);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 122, 89, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 204, 128, 0.4);
 }
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
+  gap: 2rem;
   align-items: start;
 }
 
 .flagSection {
   display: flex;
-  justify-content: center;
 }
 
 .flag {
   width: 100%;
-  max-width: 300px;
+  max-width: 200px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -56,7 +56,7 @@
 }
 
 .countryName {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--foreground);
   margin: 0;
@@ -79,10 +79,10 @@
 
 .infoItem {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: 0.25rem;
   align-items: start;
-  padding: 0.75rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -93,52 +93,57 @@
 .label {
   font-weight: 600;
   color: var(--foreground);
-  opacity: 0.9;
+  opacity: 0.7;
+  font-size: 0.9rem;
 }
 
 .value {
   color: var(--foreground);
   word-wrap: break-word;
+  font-size: 1rem;
 }
 
 /* Wikipedia Section */
 .wikipediaSection {
-  margin-top: 3rem;
-  padding-top: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
   border-top: 2px solid var(--border);
 }
 
 .sectionTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--foreground);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .loadingState {
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   color: var(--foreground);
   opacity: 0.7;
   font-style: italic;
+  font-size: 0.95rem;
 }
 
 .wikipediaContent {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   align-items: start;
 }
 
 .wikipediaImageWrapper {
   display: flex;
   justify-content: center;
+  order: 1;
 }
 
 .wikipediaImage {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 200px;
+  max-width: 150px;
   height: auto;
 }
 
@@ -146,19 +151,22 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  order: 2;
 }
 
 .wikipediaDescription {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--foreground);
   margin: 0;
   line-height: 1.4;
+  text-align: center;
 }
 
 .wikipediaExtract {
   color: var(--foreground);
   opacity: 0.9;
   line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 .wikipediaExtract p {
@@ -167,6 +175,7 @@
 
 .wikipediaLink {
   margin-top: 1rem;
+  text-align: center;
 }
 
 .readMoreLink {
@@ -177,84 +186,133 @@
   text-decoration: none;
   font-weight: 500;
   transition: all 0.2s ease;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #0070f3;
+  border-radius: 25px;
+  background: transparent;
 }
 
 .readMoreLink:hover {
-  color: #0051cc;
-  text-decoration: underline;
+  color: white;
+  background: #0070f3;
+  text-decoration: none;
 }
 
 .noWikipediaData {
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   color: var(--foreground);
   opacity: 0.6;
   font-style: italic;
+  font-size: 0.95rem;
 }
 
-@media (max-width: 768px) {
+/* Tablet Breakpoint (768px+) */
+@media (min-width: 768px) {
   .countryDetails {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 
   .content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
 
   .countryName {
     font-size: 2rem;
   }
 
+  .flag {
+    max-width: 250px;
+  }
+
   .infoItem {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
-    padding: 0.5rem 0;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
   }
 
   .label {
-    font-size: 0.9rem;
-    opacity: 0.7;
+    opacity: 0.9;
+    font-size: 1rem;
   }
 
   .value {
     font-size: 1rem;
   }
 
-  .flag {
-    max-width: 250px;
-  }
-
-  /* Wikipedia responsive */
-  .wikipediaContent {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .wikipediaImage {
-    max-width: 150px;
+  .wikipediaSection {
+    margin-top: 3rem;
+    padding-top: 2rem;
   }
 
   .sectionTitle {
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .countryDetails {
-    padding: 0.75rem;
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 1.5rem;
   }
 
-  .countryName {
-    font-size: 1.75rem;
+  .loadingState {
+    padding: 2rem;
+    font-size: 1rem;
   }
 
-  .flag {
+  .wikipediaContent {
+    grid-template-columns: auto 1fr;
+    gap: 2rem;
+  }
+
+  .wikipediaImageWrapper {
+    order: 0;
+  }
+
+  .wikipediaImage {
     max-width: 200px;
   }
 
+  .wikipediaText {
+    order: 0;
+  }
+
+  .wikipediaDescription {
+    font-size: 1.1rem;
+    text-align: left;
+  }
+
+  .wikipediaExtract {
+    font-size: 1rem;
+  }
+
+  .wikipediaLink {
+    text-align: left;
+  }
+
+  .readMoreLink {
+    font-size: 1rem;
+  }
+
+  .noWikipediaData {
+    padding: 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Desktop Breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .countryDetails {
+    padding: 2rem;
+  }
+
+  .countryName {
+    font-size: 2.5rem;
+  }
+
+  .flag {
+    max-width: 300px;
+  }
+
   .backButton {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
   }
 }

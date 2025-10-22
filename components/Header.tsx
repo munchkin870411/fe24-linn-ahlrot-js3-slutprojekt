@@ -8,7 +8,7 @@ export default function Header() {
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
           <span className={styles.logoIcon}>☀️</span>
-          <span className={styles.logoText}>MunchkinTravelExplorer</span>
+          <span className={styles.logoText}>MunchkinTravelApp</span>
         </Link>
 
         <Link href="/auth/signin" className={styles.loginButton}>

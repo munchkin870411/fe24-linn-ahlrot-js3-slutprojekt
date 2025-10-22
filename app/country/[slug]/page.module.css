@@ -1,25 +1,26 @@
-/* Country Page Styles - Same structure as homepage */
+/* Country Page Styles - Mobile First */
 
 .page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .main {
   max-width: 1400px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   flex: 1;
+  gap: 1.5rem;
 }
 
-/* Grid Layout for Country + Weather */
+/* Grid Layout for Country + Weather - Mobile First */
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr 350px;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: start;
 }
 
@@ -27,43 +28,45 @@
   min-width: 0; /* Prevents grid overflow */
 }
 
-/* Weather Section */
+/* Weather Section - Mobile First */
 .weatherSection {
-  position: sticky;
-  top: 2rem;
+  position: static;
   align-self: start;
 }
 
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .contentGrid {
-    grid-template-columns: 1fr 300px;
-    gap: 2rem;
+/* Tablet - 768px och uppåt */
+@media (min-width: 768px) {
+  .page {
+    padding: 1rem;
   }
-}
 
-@media (max-width: 968px) {
-  .contentGrid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  
-  .weatherSection {
-    position: static;
-    order: -1; /* Show weather first on mobile */
-  }
-  
   .main {
     padding: 1rem;
   }
 }
 
-@media (max-width: 768px) {
-  .page {
-    padding: 0.5rem;
+/* Tablet - 768px och uppåt */
+@media (min-width: 768px) {
+  .main {
+    padding: 2rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
   }
   
-  .main {
-    gap: 1.5rem;
+  .weatherSection {
+    position: sticky;
+    top: 2rem;
+    order: 0; /* Normal order on larger screens */
+  }
+}
+
+/* Desktop - 1024px och uppåt */
+@media (min-width: 1024px) {
+  .contentGrid {
+    grid-template-columns: 1fr 350px;
+    gap: 3rem;
   }
 }

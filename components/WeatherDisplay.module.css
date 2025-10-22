@@ -1,15 +1,15 @@
-/* Weather Display Styles */
+/* Weather Display Styles - Mobile First */
 
 .weatherCard {
   background: #ffffff;
   border: 2px solid var(--border);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.25rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   width: 100%;
   max-width: 350px;
-  margin-top: 80px;
+  margin: 0 auto;
 }
 
 .weatherCard:hover {
@@ -20,8 +20,9 @@
 
 .weatherHeader {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
@@ -100,7 +101,6 @@
   font-weight: 600;
   margin-left: auto;
 }
-
 .weatherFooter {
   margin-top: 1rem;
   padding-top: 0.75rem;
@@ -195,24 +195,32 @@
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Tablet Breakpoint (768px+) */
+@media (min-width: 768px) {
   .weatherCard {
-    margin: 1rem 0;
-    padding: 1.25rem;
+    margin-top: 80px;
+    padding: 1rem;
   }
   
   .weatherHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+/* Desktop Breakpoint (1024px+) */
+@media (min-width: 1024px) {
+  .weatherCard {
+    max-width: 400px;
   }
   
   .temperature {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   
   .weatherIcon {
-    font-size: 2.5rem;
+    font-size: 3rem;
   }
 }

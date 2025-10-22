@@ -1,7 +1,8 @@
-/* Search Bar Styles */
+/* Search Bar Styles - Mobile First */
 .searchBar {
   width: 100%;
-  max-width: 500px;
+  max-width: 100%;
+  padding: 0 1rem;
 }
 
 .searchInputWrapper {
@@ -12,7 +13,7 @@
 
 .searchInput {
   width: 100%;
-  padding: 12px 80px 12px 16px;
+  padding: 14px 80px 14px 16px;
   border: 2px solid var(--border);
   border-radius: 15px;
   background: var(--card-bg);
@@ -20,6 +21,7 @@
   font-size: 16px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px var(--card-shadow);
+  min-height: 44px;
 }
 
 .searchInput:focus {
@@ -36,26 +38,31 @@
 .searchSubmitBtn {
   position: absolute;
   right: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--primary));
+  background: linear-gradient(135deg, var(--accent-light), var(--primary-light));
   border: none;
-  color: white;
+  color: var(--foreground);
   cursor: pointer;
   font-size: 16px;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 10px;
   transition: all 0.3s ease;
-  box-shadow: 0 3px 8px rgba(255, 122, 89, 0.3);
+  box-shadow: 0 3px 8px rgba(255, 204, 128, 0.3);
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchSubmitBtn:hover {
-  background: linear-gradient(135deg, var(--primary), var(--accent));
+  background: linear-gradient(135deg, var(--primary-light), var(--accent-light));
   transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(255, 122, 89, 0.4);
+  box-shadow: 0 5px 15px rgba(255, 204, 128, 0.4);
 }
 
 .searchClearBtn {
   position: absolute;
-  right: 60px;
+  right: 66px;
   background: rgba(128, 128, 128, 0.1);
   border: none;
   color: var(--foreground);
@@ -65,11 +72,13 @@
   padding: 6px;
   border-radius: 50%;
   transition: all 0.2s;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
 }
 
 .searchClearBtn:hover {
@@ -79,8 +88,29 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 768px) {
+/* Tablet - 768px och uppåt */
+@media (min-width: 768px) {
+  .searchBar {
+    max-width: 700px;
+    padding: 0;
+  }
+
   .searchInput {
-    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 12px 80px 12px 16px;
+    min-height: auto;
+  }
+
+  .searchSubmitBtn {
+    padding: 8px 12px;
+    min-width: auto;
+    min-height: auto;
+  }
+
+  .searchClearBtn {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    right: 60px;
   }
 }

@@ -130,7 +130,6 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
 
       {/* Wikipedia Section */}
       <div className={styles.wikipediaSection}>
-        <h2 className={styles.sectionTitle}>Om {country.name.common}</h2>
         
         {wikipediaLoading ? (
           <div className={styles.loadingState}>
@@ -145,18 +144,6 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
           </div>
         ) : wikipediaData ? (
           <div className={styles.wikipediaContent}>
-            {wikipediaData.thumbnail && (
-              <div className={styles.wikipediaImageWrapper}>
-                <Image
-                  src={wikipediaData.thumbnail.source}
-                  alt={`${country.name.common} from Wikipedia`}
-                  width={wikipediaData.thumbnail.width}
-                  height={wikipediaData.thumbnail.height}
-                  className={styles.wikipediaImage}
-                />
-              </div>
-            )}
-            
             <div className={styles.wikipediaText}>
               {wikipediaData.description && (
                 <p className={styles.wikipediaDescription}>
