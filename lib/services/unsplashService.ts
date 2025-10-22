@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const UNSPLASH_BASE_URL = 'https://api.unsplash.com';
 
 export interface UnsplashPhoto {
@@ -41,22 +39,27 @@ export async function searchUnsplashPhotos(
       return null;
     }
 
-    const response = await axios.get<UnsplashSearchResponse>(
-      `${UNSPLASH_BASE_URL}/search/photos`,
+    const response = await fetch(
+      `${UNSPLASH_BASE_URL}/search/photos?${new URLSearchParams({
+        query,
+        page: page.toString(),
+        per_page: perPage.toString(),
+        orientation: 'landscape'
+      })}`,
       {
-        params: {
-          query,
-          page,
-          per_page: perPage,
-          orientation: 'landscape'
-        },
         headers: {
           Authorization: `Client-ID ${accessKey}`
-        }
+        },
+        next: { revalidate: 86400 } // 24 hour cache
       }
     );
 
-    return response.data;
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data: UnsplashSearchResponse = await response.json();
+    return data;
   } catch (error) {
     console.error('Unsplash API Error:', error);
     return null;

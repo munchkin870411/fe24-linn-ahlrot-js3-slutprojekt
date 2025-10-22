@@ -48,8 +48,7 @@ export async function fetchWeatherData(
       headers: {
         'Accept': 'application/json',
       },
-      // Cache for 10 minutes
-      next: { revalidate: 600 }
+      next: { revalidate: 600 } // Cache for 10 minutes
     });
 
     if (!response.ok) {

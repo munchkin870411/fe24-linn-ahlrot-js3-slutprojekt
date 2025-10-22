@@ -1,60 +1,15 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { UnsplashPhoto } from '@/lib/services/unsplashService';
 import styles from './CountryGallery.module.css';
 
 interface CountryGalleryProps {
   countryName: string;
+  photos: UnsplashPhoto[];
 }
 
-export default function CountryGallery({ countryName }: CountryGalleryProps) {
-  const [photos, setPhotos] = useState<UnsplashPhoto[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        
-        const response = await fetch(`/api/unsplash?country=${encodeURIComponent(countryName)}`);
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch photos');
-        }
-        
-        const data = await response.json();
-        setPhotos(data.photos || []);
-      } catch (err) {
-        console.error('Error fetching photos:', err);
-        setError('Kunde inte ladda bilder');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (countryName) {
-      fetchPhotos();
-    }
-  }, [countryName]);
-
-  if (loading) {
-    return (
-      <div className={styles.gallerySection}>
-        <h3 className={styles.galleryTitle}>Bilder från {countryName}</h3>
-        <div className={styles.skeletonGrid}>
-          {[1, 2, 3].map((index) => (
-            <div key={index} className={styles.photoSkeleton}></div>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (error || photos.length === 0) {
+export default function CountryGallery({ countryName, photos }: CountryGalleryProps) {
+  if (photos.length === 0) {
     return (
       <div className={styles.gallerySection}>
         <h3 className={styles.galleryTitle}>Bilder från {countryName}</h3>

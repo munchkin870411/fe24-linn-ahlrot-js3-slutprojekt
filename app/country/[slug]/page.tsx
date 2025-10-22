@@ -1,6 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import CountryDetails from '@/components/CountryDetails';
+import CountryGallery from '@/components/CountryGallery';
 import WeatherDisplay from '@/components/WeatherDisplay';
 import { fetchCountryServerSide } from '@/lib/services/countryServerService';
 import { CountryPageProps } from '@/types/pages';
@@ -25,6 +26,10 @@ const CountryPage = async ({ params }: CountryPageProps) => {
             <CountryDetails 
               country={countryData.country} 
               wikipediaData={countryData.wikipedia}
+            />
+            <CountryGallery 
+              countryName={countryData.country.name.common}
+              photos={countryData.photos} 
             />
           </div>
           

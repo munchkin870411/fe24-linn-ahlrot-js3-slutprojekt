@@ -1,5 +1,6 @@
 import { Country, WikipediaPageSummary } from './country';
 import { WeatherData } from './weather';
+import { UnsplashPhoto } from '@/lib/services/unsplashService';
 
 /**
  * Response interface for country API endpoint
@@ -18,6 +19,7 @@ export interface ServerCountryData {
   country: Country;
   wikipedia: WikipediaPageSummary | null;
   weather: WeatherData | null;
+  photos: UnsplashPhoto[];
 }
 
 /**

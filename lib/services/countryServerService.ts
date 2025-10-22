@@ -1,8 +1,10 @@
 import { fetchCountries } from './countriesService';
 import { fetchCountryWikipedia } from './wikipediaService';
 import { fetchWeatherForCountry } from './weatherService';
+import { getCountryPhotos } from './unsplashService';
 import { Country, WikipediaPageSummary } from '@/types/country';
 import { WeatherData } from '@/types/weather';
+import { UnsplashPhoto } from './unsplashService';
 import { ServerCountryData } from '@/types/api';
 
 export async function fetchCountryServerSide(
@@ -41,7 +43,15 @@ export async function fetchCountryServerSide(
       console.warn(`Weather unavailable for ${country.name.common}`);
     }
 
-    return { country, wikipedia, weather };
+    // Unsplash photos (optional)
+    let photos: UnsplashPhoto[] = [];
+    try {
+      photos = await getCountryPhotos(country.name.common);
+    } catch {
+      console.warn(`Photos unavailable for ${country.name.common}`);
+    }
+
+    return { country, wikipedia, weather, photos };
   } catch (error) {
     console.error('Server error:', error);
     return null;
