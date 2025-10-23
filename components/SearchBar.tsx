@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { searchSchema } from '@/lib/schemas';
 import { SearchBarProps } from '@/types/props';
 import styles from './SearchBar.module.css';
 
@@ -13,15 +14,30 @@ export default function SearchBar({
   const searchParams = useSearchParams();
   const router = useRouter();
   const [query, setQuery] = useState(searchParams.get('search') || '');
+  const [error, setError] = useState<string>('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const params = new URLSearchParams(searchParams);
-    const trimmedQuery = query.trim();
+    // Reset error
+    setError('');
     
-    if (trimmedQuery) {
-      params.set('search', trimmedQuery);
+    // Validate with Zod
+    const result = searchSchema.safeParse({ query });
+    
+    if (!result.success) {
+      const firstError = result.error.issues[0];
+      setError(firstError.message);
+      return;
+    }
+    
+    // Use validated and cleaned data
+    const validatedQuery = result.data.query || '';
+    
+    const params = new URLSearchParams(searchParams);
+    
+    if (validatedQuery) {
+      params.set('search', validatedQuery);
     } else {
       params.delete('search');
     }
@@ -30,11 +46,12 @@ export default function SearchBar({
     params.set('page', '1');
     
     router.replace(`?${params.toString()}`, { scroll: false });
-    onSearch?.(trimmedQuery);
+    onSearch?.(validatedQuery);
   };
 
   const handleClear = () => {
     setQuery('');
+    setError('');
     
     // Reset everything to default state - remove all search params except pageSize
     const params = new URLSearchParams();
@@ -48,16 +65,33 @@ export default function SearchBar({
     onSearch?.('');
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setQuery(value);
+    
+    // Clear error when user starts typing
+    if (error) {
+      setError('');
+    }
+    
+    // Real-time validation for length
+    if (value.length > 50) {
+      setError('Search query must be less than 50 characters');
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className={`${styles.searchBar} ${className}`}>
       <div className={styles.searchInputWrapper}>
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={handleInputChange}
           placeholder={placeholder}
-          className={styles.searchInput}
+          className={`${styles.searchInput} ${error ? styles.searchInputError : ''}`}
           aria-label="Search countries"
+          aria-invalid={!!error}
+          aria-describedby={error ? 'search-error' : undefined}
         />
         {query && (
           <button
@@ -78,6 +112,11 @@ export default function SearchBar({
           🔍
         </button>
       </div>
+      {error && (
+        <div id="search-error" className={styles.errorMessage} role="alert">
+          {error}
+        </div>
+      )}
     </form>
   );
 }

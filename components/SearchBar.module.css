@@ -114,3 +114,28 @@
     right: 60px;
   }
 }
+
+/* Error States */
+.searchInputError {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.errorMessage {
+  color: #ef4444;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid #ef4444;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  .errorMessage {
+    font-size: 0.875rem;
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+}
