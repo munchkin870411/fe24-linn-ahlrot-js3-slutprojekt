@@ -1,4 +1,3 @@
-import { fetchCountries } from './countriesService';
 import { fetchCountryWikipedia } from './wikipediaService';
 import { fetchWeatherForCountry } from './weatherService';
 import { getCountryPhotos } from './unsplashService';
@@ -11,13 +10,19 @@ export async function fetchCountryServerSide(
   countryCode: string
 ): Promise<ServerCountryData | null> {
   try {
-    // Fetch all countries to find the specific one
-    const countriesData = await fetchCountries({ pageSize: 300 });
-    
-    const country = countriesData.countries.find((c: Country) =>
-      c.cca3.toLowerCase() === countryCode.toLowerCase() ||
-      c.cca2.toLowerCase() === countryCode.toLowerCase()
+    // Fetch specific country directly from REST Countries
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${countryCode}`,
+      { next: { revalidate: 86400 } }
     );
+
+    if (!response.ok) {
+      console.warn(`Country not found: ${countryCode}`);
+      return null;
+    }
+
+    const countryArray: Country[] = await response.json();
+    const country = countryArray[0]; // REST Countries returns array even for single country
 
     if (!country) {
       return null;

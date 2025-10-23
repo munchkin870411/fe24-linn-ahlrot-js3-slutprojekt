@@ -15,7 +15,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
   if (!country) {
     return (
       <LoadingSpinner 
-        message="Laddar landsinformation..." 
+        message="Loading country information..." 
         size="large"
       />
     );
@@ -42,7 +42,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
     <div className={styles.countryDetails}>
       <div className={styles.header}>
         <Link href="/" className={styles.backButton}>
-          ← Tillbaka till länder
+          ← Back
         </Link>
       </div>
 
