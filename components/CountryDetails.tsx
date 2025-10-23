@@ -61,7 +61,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
         <div className={styles.infoSection}>
           <h1 className={styles.countryName}>{country.name.common}</h1>
           {country.name.official !== country.name.common && (
-            <p className={styles.officialName}>Officiellt namn: {country.name.official}</p>
+            <p className={styles.officialName}>Official name: {country.name.official}</p>
           )}
 
           <div className={styles.infoGrid}>
@@ -78,7 +78,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
             )}
 
             <div className={styles.infoItem}>
-              <span className={styles.label}>Huvudstad:</span>
+              <span className={styles.label}>Capital:</span>
               <span className={styles.value}>
                 {country.capital ? country.capital.join(', ') : 'N/A'}
               </span>
@@ -97,30 +97,30 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
             </div>
 
             <div className={styles.infoItem}>
-              <span className={styles.label}>Språk:</span>
+              <span className={styles.label}>Languages:</span>
               <span className={styles.value}>{formatLanguages(country.languages)}</span>
             </div>
 
             <div className={styles.infoItem}>
-              <span className={styles.label}>Valutor:</span>
+              <span className={styles.label}>Currencies:</span>
               <span className={styles.value}>{formatCurrencies(country.currencies)}</span>
             </div>
 
             {country.timezones && country.timezones.length > 0 && (
               <div className={styles.infoItem}>
-                <span className={styles.label}>Tidszoner:</span>
+                <span className={styles.label}>Timezones:</span>
                 <span className={styles.value}>{country.timezones.join(', ')}</span>
               </div>
             )}
 
             <div className={styles.infoItem}>
-              <span className={styles.label}>Landskod:</span>
+              <span className={styles.label}>Country code:</span>
               <span className={styles.value}>{country.cca2} / {country.cca3}</span>
             </div>
 
             {country.borders && country.borders.length > 0 && (
               <div className={styles.infoItem}>
-                <span className={styles.label}>Gränsar till:</span>
+                <span className={styles.label}>Borders:</span>
                 <span className={styles.value}>{country.borders.join(', ')}</span>
               </div>
             )}
