@@ -11,7 +11,7 @@ export async function fetchCountryServerSide(
   countryCode: string
 ): Promise<ServerCountryData | null> {
   try {
-    // Hämta länder direkt från externa API:er (server-side)
+    // Fetch all countries to find the specific one
     const countriesData = await fetchCountries({ pageSize: 300 });
     
     const country = countriesData.countries.find((c: Country) =>

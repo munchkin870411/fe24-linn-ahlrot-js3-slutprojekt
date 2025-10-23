@@ -68,7 +68,7 @@ export default function Pagination({
     <div className={`${styles.pagination} ${className}`}>
       <div className={styles.paginationInfo}>
         <p>
-          Sida {currentPage} av {totalPages} ({totalItems} länder totalt)
+          Page {currentPage} of {totalPages} ({totalItems} countries total)
         </p>
       </div>
       
@@ -77,9 +77,9 @@ export default function Pagination({
           onClick={handlePrevious}
           disabled={currentPage <= 1}
           className={`${styles.paginationBtn} ${styles.navBtn}`}
-          aria-label="Föregående sida"
+          aria-label="Previous page"
         >
-          ← Föregående
+          ← Previous
         </button>
         
         <div className={styles.pageNumbers}>
@@ -95,7 +95,7 @@ export default function Pagination({
                 className={`${styles.paginationBtn} ${styles.pageBtn} ${
                   currentPage === page ? styles.active : ''
                 }`}
-                aria-label={`Gå till sida ${page}`}
+                aria-label={`Go to page ${page}`}
                 aria-current={currentPage === page ? 'page' : undefined}
               >
                 {page}
@@ -108,9 +108,9 @@ export default function Pagination({
           onClick={handleNext}
           disabled={currentPage >= totalPages}
           className={`${styles.paginationBtn} ${styles.navBtn}`}
-          aria-label="Nästa sida"
+          aria-label="Next page"
         >
-          Nästa →
+          Next →
         </button>
       </div>
     </div>

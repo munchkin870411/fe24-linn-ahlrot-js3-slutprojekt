@@ -88,7 +88,7 @@
   transform: scale(1.1);
 }
 
-/* Tablet - 768px och uppåt */
+/* Tablet Breakpoint (768px+) */
 @media (min-width: 768px) {
   .searchBar {
     max-width: 700px;

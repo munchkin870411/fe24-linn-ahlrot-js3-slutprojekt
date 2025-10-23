@@ -13,21 +13,21 @@ export default function ErrorDisplay({
   return (
     <div className={`${styles.errorContainer} ${className || ''}`}>
       <h1 className={styles.errorTitle}>
-        {isNotFound ? 'Land hittades inte' : 'Fel vid laddning'}
+        {isNotFound ? 'Country not found' : 'Error loading'}
       </h1>
       <p className={styles.errorDescription}>
         {isNotFound 
-          ? `Landet med kod "${countryCode}" kunde inte hittas.`
-          : 'Kunde inte ladda landsinformation.'
+          ? `The country with code "${countryCode}" could not be found.`
+          : 'Could not load country information.'
         }
       </p>
       {!isNotFound && error && (
         <details className={styles.errorDetails}>
           <summary className={styles.errorSummary}>
-            Visa teknisk information
+            Show technical information
           </summary>
           <pre className={styles.errorPre}>
-            {error.message || 'Okänt fel'}
+            {error.message || 'Unknown error'}
           </pre>
         </details>
       )}
@@ -37,7 +37,7 @@ export default function ErrorDisplay({
             onClick={onRetry}
             className={styles.retryButton}
           >
-            Försök igen
+            Try again
           </button>
         )}
         {onGoBack && (
@@ -45,7 +45,7 @@ export default function ErrorDisplay({
             onClick={onGoBack}
             className={styles.backButton}
           >
-            Gå tillbaka
+            Go back
           </button>
         )}
       </div>

@@ -134,13 +134,13 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
         {wikipediaLoading ? (
           <div className={styles.loadingState}>
             <LoadingSpinner 
-              message="Laddar information från Wikipedia..." 
+              message="Loading information from Wikipedia..." 
               size="medium"
             />
           </div>
         ) : wikipediaError ? (
           <div className={styles.noWikipediaData}>
-            <p>Ingen ytterligare information tillgänglig från Wikipedia.</p>
+            <p>No additional information available from Wikipedia.</p>
           </div>
         ) : wikipediaData ? (
           <div className={styles.wikipediaContent}>
@@ -164,14 +164,14 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
                   rel="noopener noreferrer"
                   className={styles.readMoreLink}
                 >
-                  Läs mer på Wikipedia →
+                  Read more on Wikipedia →
                 </a>
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.noWikipediaData}>
-            <p>Ingen ytterligare information tillgänglig från Wikipedia.</p>
+            <p>No additional information available from Wikipedia.</p>
           </div>
         )}
       </div>

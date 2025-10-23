@@ -11,7 +11,7 @@ const CountryPage = async ({ params }: CountryPageProps) => {
   const { slug } = await params;
   const countryCode = slug.toUpperCase();
 
-  // Server-side data fetching - nu inkluderar weather data
+  // Fetch country data from server-side service
   const countryData = await fetchCountryServerSide(countryCode);
   
   if (!countryData) {

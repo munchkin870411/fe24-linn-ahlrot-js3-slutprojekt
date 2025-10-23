@@ -11,8 +11,8 @@ export default function WeatherDisplay({
     return (
       <div className={`${styles.weatherCard} ${styles.error} ${className || ''}`}>
         <div className={styles.errorIcon}>🌦️</div>
-        <p>Väderdata inte tillgänglig</p>
-        <small>Kunde inte hämta väderdata för denna plats</small>
+        <p>Weather data not available</p>
+        <small>Could not retrieve weather data for this location</small>
       </div>
     );
   }
@@ -24,7 +24,7 @@ export default function WeatherDisplay({
     <div className={`${styles.weatherCard} ${className || ''}`}>
       <div className={styles.weatherHeader}>
         <h3 className={styles.weatherTitle}>
-          Väder i {location.city}
+          Weather in {location.city}
         </h3>
       </div>
 
@@ -43,19 +43,19 @@ export default function WeatherDisplay({
       <div className={styles.weatherDetails}>
         <div className={styles.weatherDetail}>
           <span className={styles.detailIcon}>💨</span>
-          <span className={styles.detailLabel}>Vind:</span>
+          <span className={styles.detailLabel}>Wind:</span>
           <span className={styles.detailValue}>{current.windSpeed} km/h</span>
         </div>
         
         <div className={styles.weatherDetail}>
           <span className={styles.detailIcon}>💧</span>
-          <span className={styles.detailLabel}>Luftfuktighet:</span>
+          <span className={styles.detailLabel}>Humidity:</span>
           <span className={styles.detailValue}>{current.humidity}%</span>
         </div>
         
         <div className={styles.weatherDetail}>
           <span className={styles.detailIcon}>{current.isDay ? '☀️' : '🌙'}</span>
-          <span className={styles.detailLabel}>Tid:</span>
+          <span className={styles.detailLabel}>Time:</span>
           <span className={styles.detailValue}>
             {new Date(current.time).toLocaleTimeString('sv-SE', {
               hour: '2-digit',
@@ -66,7 +66,7 @@ export default function WeatherDisplay({
       </div>
 
       <div className={styles.weatherFooter}>
-        <small>Data från Open-Meteo</small>
+        <small>Data from Open-Meteo</small>
       </div>
     </div>
   );

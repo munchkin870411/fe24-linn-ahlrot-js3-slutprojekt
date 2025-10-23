@@ -101,7 +101,7 @@
   font-weight: 600;
 }
 
-/* Tablet - 768px och uppåt */
+/* Tablet Breakpoint (768px+) */
 @media (min-width: 768px) {
   .paginationInfo p {
     font-size: 14px;

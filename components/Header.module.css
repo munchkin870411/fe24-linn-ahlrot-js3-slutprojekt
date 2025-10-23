@@ -65,7 +65,7 @@
   background: linear-gradient(135deg, var(--primary), var(--accent));
 }
 
-/* Tablet - 768px och uppåt */
+/* Tablet Breakpoint (768px+) */
 @media (min-width: 768px) {
   .container {
     padding: 0 1rem;
@@ -89,7 +89,7 @@
   }
 }
 
-/* Desktop - 1024px och uppåt */
+/* Desktop Breakpoint (1024px+) */
 @media (min-width: 1024px) {
   .container {
     padding: 0 2rem;

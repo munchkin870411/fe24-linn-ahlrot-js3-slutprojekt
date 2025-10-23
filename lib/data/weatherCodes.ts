@@ -8,105 +8,105 @@ import { WeatherCodeInfo } from '@/types/weather';
 export const WMO_WEATHER_CODES: Record<number, WeatherCodeInfo> = {
   // Clear conditions
   0: { 
-    description: 'Klar himmel', 
+    description: 'Clear sky', 
     icon: '☀️', 
     dayIcon: '☀️', 
     nightIcon: '🌙' 
   },
   1: { 
-    description: 'Mestadels klart', 
+    description: 'Mostly clear', 
     icon: '🌤️', 
     dayIcon: '🌤️', 
     nightIcon: '🌙' 
   },
   2: { 
-    description: 'Delvis molnigt', 
+    description: 'Partly cloudy', 
     icon: '⛅', 
     dayIcon: '⛅', 
     nightIcon: '☁️' 
   },
   3: { 
-    description: 'Mulet', 
+    description: 'Cloudy', 
     icon: '☁️' 
   },
 
   // Fog
   45: { 
-    description: 'Dimma', 
+    description: 'Fog', 
     icon: '🌫️' 
   },
   48: { 
-    description: 'Rimfrost dimma', 
+    description: 'Rime fog', 
     icon: '🌫️' 
   },
 
   // Drizzle
   51: { 
-    description: 'Lätt duggregn', 
+    description: 'Light drizzle', 
     icon: '🌧️' 
   },
   53: { 
-    description: 'Måttligt duggregn', 
+    description: 'Moderate drizzle', 
     icon: '🌧️' 
   },
   55: { 
-    description: 'Kraftigt duggregn', 
+    description: 'Heavy drizzle', 
     icon: '🌧️' 
   },
 
   // Rain
   61: { 
-    description: 'Lätt regn', 
+    description: 'Light rain', 
     icon: '🌧️' 
   },
   63: { 
-    description: 'Måttligt regn', 
+    description: 'Moderate rain', 
     icon: '🌧️' 
   },
   65: { 
-    description: 'Kraftigt regn', 
+    description: 'Heavy rain', 
     icon: '🌧️' 
   },
 
   // Snow
   71: { 
-    description: 'Lätt snöfall', 
+    description: 'Light snow', 
     icon: '🌨️' 
   },
   73: { 
-    description: 'Måttligt snöfall', 
+    description: 'Moderate snow', 
     icon: '🌨️' 
   },
   75: { 
-    description: 'Kraftigt snöfall', 
+    description: 'Heavy snow', 
     icon: '🌨️' 
   },
 
   // Rain showers
   80: { 
-    description: 'Lätta regnskurar', 
+    description: 'Light rain showers', 
     icon: '🌧️' 
   },
   81: { 
-    description: 'Måttliga regnskurar', 
+    description: 'Moderate rain showers', 
     icon: '🌧️' 
   },
   82: { 
-    description: 'Kraftiga regnskurar', 
+    description: 'Heavy rain showers', 
     icon: '🌧️' 
   },
 
   // Thunderstorms
   95: { 
-    description: 'Åska', 
+    description: 'Thunderstorm', 
     icon: '⛈️' 
   },
   96: { 
-    description: 'Åska med lätt hagel', 
+    description: 'Thunderstorm with light hail', 
     icon: '⛈️' 
   },
   99: { 
-    description: 'Åska med kraftigt hagel', 
+    description: 'Thunderstorm with heavy hail', 
     icon: '⛈️' 
   }
 };

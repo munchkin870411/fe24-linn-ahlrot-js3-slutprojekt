@@ -28,7 +28,7 @@ const CountriesList: React.FC = () => {
   if (isLoading) {
     return (
       <LoadingSpinner 
-        message="Laddar länder..." 
+        message="Loading countries..." 
         size="large" 
       />
     );

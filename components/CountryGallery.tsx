@@ -12,9 +12,9 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
   if (photos.length === 0) {
     return (
       <div className={styles.gallerySection}>
-        <h3 className={styles.galleryTitle}>Bilder från {countryName}</h3>
+        <h3 className={styles.galleryTitle}>Pictures of {countryName}</h3>
         <div className={styles.noPhotos}>
-          <p>Inga bilder tillgängliga</p>
+          <p>No photos available</p>
         </div>
       </div>
     );
@@ -22,7 +22,7 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
 
   return (
     <div className={styles.gallerySection}>
-      <h3 className={styles.galleryTitle}>Bilder från {countryName}</h3>
+      <h3 className={styles.galleryTitle}>Pictures of {countryName}</h3>
       <div className={styles.photoGrid}>
         {photos.map((photo) => (
           <div key={photo.id} className={styles.photoCard}>
@@ -34,7 +34,7 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
             >
               <Image
                 src={photo.urls.small}
-                alt={photo.alt_description || `Bild från ${countryName}`}
+                alt={photo.alt_description || `Picture of ${countryName}`}
                 width={400}
                 height={300}
                 className={styles.photo}
@@ -42,7 +42,7 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
               />
               <div className={styles.photoOverlay}>
                 <div className={styles.photoCredit}>
-                  Foto av {photo.user.name}
+                  Photo by {photo.user.name}
                 </div>
               </div>
             </a>
