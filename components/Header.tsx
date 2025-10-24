@@ -1,8 +1,12 @@
-import React from 'react';
 import Link from 'next/link';
 import styles from './Header.module.css';
 
-export default function Header() {
+import { auth } from '@/auth';
+import { loginWithGoogle, logout } from './authActions';
+
+export default async function Header() {
+  const session = await auth();
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
@@ -11,9 +15,15 @@ export default function Header() {
           <span className={styles.logoText}>MunchkinTravelApp</span>
         </Link>
 
-        <Link href="/auth/signin" className={styles.loginButton}>
-          Log in
-        </Link>
+        {session ? (
+          <form action={logout}>
+            <button className={styles.loginButton} type="submit">Log out</button>
+          </form>
+        ) : (
+          <form action={loginWithGoogle}>
+            <button className={styles.loginButton} type="submit">Log in</button>
+          </form>
+        )}
       </div>
     </header>
   );

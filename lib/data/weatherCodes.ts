@@ -117,10 +117,3 @@ export const WMO_WEATHER_CODES: Record<number, WeatherCodeInfo> = {
 export function getWeatherInfo(code: number): WeatherCodeInfo | null {
   return WMO_WEATHER_CODES[code] || null;
 }
-
-/**
- * Get all available weather codes
- */
-export function getAllWeatherCodes(): number[] {
-  return Object.keys(WMO_WEATHER_CODES).map(Number);
-}

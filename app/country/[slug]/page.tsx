@@ -1,19 +1,27 @@
-import React from 'react';
-import { notFound } from 'next/navigation';
-import CountryDetails from '@/components/CountryDetails';
-import CountryGallery from '@/components/CountryGallery';
-import WeatherDisplay from '@/components/WeatherDisplay';
-import { getCountryData } from '@/lib/services/countryDataService';
-import { CountryPageProps } from '@/types/pages';
-import styles from './page.module.css';
+import React from "react";
+import { notFound } from "next/navigation";
+import CountryDetails from "@/components/CountryDetails";
+import CountryGallery from "@/components/CountryGallery";
+import WeatherDisplay from "@/components/WeatherDisplay";
+import { getCountryData } from "@/lib/services/countryDataService";
+import { CountryPageProps } from "@/types/pages";
+import styles from "./page.module.css";
+
+import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 
 const CountryPage = async ({ params }: CountryPageProps) => {
+  const session = await auth();
+  if (!session) {
+    redirect("/");
+  }
+
   const { slug } = await params;
   const countryCode = slug.toUpperCase();
 
   // Fetch country data from server-side service
   const countryData = await getCountryData(countryCode);
-  
+
   if (!countryData) {
     notFound();
   }
@@ -23,17 +31,17 @@ const CountryPage = async ({ params }: CountryPageProps) => {
       <main className={styles.main}>
         <div className={styles.contentGrid}>
           <div className={styles.countrySection}>
-            <CountryDetails 
-              country={countryData.country} 
+            <CountryDetails
+              country={countryData.country}
               wikipediaData={countryData.wikipedia}
             />
           </div>
-          
+
           <div className={styles.weatherSection}>
             <WeatherDisplay weather={countryData.weather} />
-            <CountryGallery 
+            <CountryGallery
               countryName={countryData.country.name.common}
-              photos={countryData.photos} 
+              photos={countryData.photos}
             />
           </div>
         </div>
