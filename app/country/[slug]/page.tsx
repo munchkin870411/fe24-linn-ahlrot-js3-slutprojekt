@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import CountryDetails from '@/components/CountryDetails';
 import CountryGallery from '@/components/CountryGallery';
 import WeatherDisplay from '@/components/WeatherDisplay';
-import { fetchCountryServerSide } from '@/lib/services/countryServerService';
+import { getCountryData } from '@/lib/services/countryService';
 import { CountryPageProps } from '@/types/pages';
 import styles from './page.module.css';
 
@@ -12,7 +12,7 @@ const CountryPage = async ({ params }: CountryPageProps) => {
   const countryCode = slug.toUpperCase();
 
   // Fetch country data from server-side service
-  const countryData = await fetchCountryServerSide(countryCode);
+  const countryData = await getCountryData(countryCode);
   
   if (!countryData) {
     notFound();
