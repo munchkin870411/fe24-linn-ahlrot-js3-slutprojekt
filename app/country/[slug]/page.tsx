@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import CountryDetails from '@/components/CountryDetails';
 import CountryGallery from '@/components/CountryGallery';
 import WeatherDisplay from '@/components/WeatherDisplay';
-import { getCountryData } from '@/lib/services/countryService';
+import { getCountryData } from '@/lib/services/countryDataService';
 import { CountryPageProps } from '@/types/pages';
 import styles from './page.module.css';
 

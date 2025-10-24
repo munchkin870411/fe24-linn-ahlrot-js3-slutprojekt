@@ -1,7 +1,6 @@
 // Component Props Types
 
-import { Country, WikipediaPageSummary } from './country';
-import { WeatherData } from './weather';
+import { Country, WikipediaPageSummary, WeatherData } from './types';
 
 export interface SearchBarProps {
   onSearch?: (query: string) => void;

@@ -1,30 +1,6 @@
+import { UnsplashPhoto, UnsplashSearchResponse, unsplashPhotoSchema } from '@/types/types';
+
 const UNSPLASH_BASE_URL = 'https://api.unsplash.com';
-
-export interface UnsplashPhoto {
-  id: string;
-  urls: {
-    raw: string;
-    full: string;
-    regular: string;
-    small: string;
-    thumb: string;
-  };
-  alt_description: string | null;
-  description: string | null;
-  user: {
-    name: string;
-    username: string;
-  };
-  links: {
-    html: string;
-  };
-}
-
-export interface UnsplashSearchResponse {
-  total: number;
-  total_pages: number;
-  results: UnsplashPhoto[];
-}
 
 export async function searchUnsplashPhotos(
   query: string,
@@ -79,7 +55,22 @@ export async function getCountryPhotos(countryName: string): Promise<UnsplashPho
     for (const query of searchQueries) {
       const result = await searchUnsplashPhotos(query, 1, 3);
       if (result && result.results.length > 0) {
-        return result.results;
+        // Validate each photo with Zod schema
+        const validatedPhotos: UnsplashPhoto[] = [];
+        
+        for (const photo of result.results) {
+          const validationResult = unsplashPhotoSchema.safeParse(photo);
+          
+          if (validationResult.success) {
+            validatedPhotos.push(validationResult.data);
+          } else {
+            console.warn('Invalid photo data:', validationResult.error);
+          }
+        }
+        
+        if (validatedPhotos.length > 0) {
+          return validatedPhotos;
+        }
       }
     }
 

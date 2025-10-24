@@ -1,4 +1,4 @@
-import { WeatherCodeInfo } from '@/types/weather';
+import { WeatherCodeInfo } from '@/types/types';
 
 /**
  * WMO Weather Interpretation Codes

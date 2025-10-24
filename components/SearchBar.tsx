@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { searchSchema } from '@/lib/schemas';
+import { searchSchema } from '@/types/types';
 import { SearchBarProps } from '@/types/props';
 import styles from './SearchBar.module.css';
 

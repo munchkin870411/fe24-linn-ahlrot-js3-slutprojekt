@@ -1,4 +1,4 @@
-import { WeatherData, OpenMeteoResponse, WeatherIconType } from '@/types/weather';
+import { WeatherData, OpenMeteoResponse, WeatherIconType, weatherSchema } from '@/types/types';
 import { getWeatherInfo } from '@/lib/data/weatherCodes';
 
 /**
@@ -40,7 +40,7 @@ export async function fetchWeatherData(
   longitude: number,
   cityName: string,
   countryName: string
-): Promise<WeatherData> {
+): Promise<WeatherData | null> {
   try {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,is_day&timezone=auto`;
     
@@ -76,10 +76,18 @@ export async function fetchWeatherData(
       }
     };
 
-    return weatherData;
+    // Validate with Zod schema
+    const result = weatherSchema.safeParse(weatherData);
+    
+    if (!result.success) {
+      console.warn('Invalid weather data:', result.error);
+      return null;
+    }
+
+    return result.data;
   } catch (error) {
     console.error('Error fetching weather data:', error);
-    throw new Error(`Failed to fetch weather data: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    return null;
   }
 }
 

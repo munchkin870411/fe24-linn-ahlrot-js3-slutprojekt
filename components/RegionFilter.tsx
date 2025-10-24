@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from 'next/navigation';
 import { RegionFilterProps } from '@/types/props';
-import { Region } from '@/types/country';
+import { Region } from '@/types/types';
 import styles from './RegionFilter.module.css';
 
 const REGIONS: Region[] = [

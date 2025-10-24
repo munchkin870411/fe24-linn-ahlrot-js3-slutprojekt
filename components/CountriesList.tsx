@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCountries } from '../lib/services/countryService';
+import { fetchCountries } from '../lib/services/countryDataService';
 import Pagination from './Pagination';
 import LoadingSpinner from './LoadingSpinner';
 import styles from './CountriesList.module.css';
