@@ -23,11 +23,11 @@ export const countrySchema = z.object({
   }),
   cca2: z.string(),
   cca3: z.string(),
-  latlng: z.tuple([z.number(), z.number()]),
+  latlng: z.tuple([z.number(), z.number()]).optional(),
   timezones: z.array(z.string()).optional(),
   borders: z.array(z.string()).optional(),
   capitalInfo: z.object({
-    latlng: z.tuple([z.number(), z.number()]),
+    latlng: z.tuple([z.number(), z.number()]).optional(),
   }).optional(),
   continents: z.array(z.string()).optional(),
 });

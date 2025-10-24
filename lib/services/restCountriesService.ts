@@ -8,8 +8,12 @@ const REST_COUNTRIES_BASE_URL = 'https://restcountries.com/v3.1';
  */
 export async function fetchAllCountries(): Promise<Country[]> {
   try {
-    // First try: /all endpoint
+    // First try: /all endpoint with proper headers
     const response = await fetch(`${REST_COUNTRIES_BASE_URL}/all`, {
+      headers: {
+        'Accept': 'application/json',
+        'User-Agent': 'Country Explorer App',
+      },
       next: { revalidate: 86400 }
     });
     
@@ -31,7 +35,9 @@ export async function fetchAllCountries(): Promise<Country[]> {
   } catch {
     console.warn('Failed to fetch /all, trying region approach');
     // Fallback: fetch by regions
-    return await fetchCountriesByRegions();
+    const result = await fetchCountriesByRegions();
+    console.log(`Fallback successful: fetched ${result.length} countries from regions`);
+    return result;
   }
 }
 
@@ -42,7 +48,13 @@ export async function fetchSingleCountry(countryCode: string): Promise<Country |
   try {
     const response = await fetch(
       `${REST_COUNTRIES_BASE_URL}/alpha/${countryCode}`,
-      { next: { revalidate: 86400 } }
+      { 
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'Country Explorer App',
+        },
+        next: { revalidate: 86400 } 
+      }
     );
 
     if (!response.ok) {
@@ -77,6 +89,10 @@ async function fetchCountriesByRegions(): Promise<Country[]> {
   const regionPromises = regions.map(async (region) => {
     try {
       const response = await fetch(`${REST_COUNTRIES_BASE_URL}/region/${region}`, {
+        headers: {
+          'Accept': 'application/json',
+          'User-Agent': 'Country Explorer App',
+        },
         next: { revalidate: 86400 }
       });
       

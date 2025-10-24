@@ -48,7 +48,11 @@ export async function getCountryData(
     // Fetch additional data with validation (now handled in each service)
     const [wikipediaResult, weatherResult, photosResult] = await Promise.allSettled([
       fetchCountryWikipedia(country.name.common),
-      fetchWeatherForCountry(country.capital?.[0] || country.name.common, country.name.common, country.latlng as [number, number]),
+      fetchWeatherForCountry(
+        country.capital?.[0] || country.name.common, 
+        country.name.common, 
+        country.latlng ? country.latlng as [number, number] : undefined
+      ),
       getCountryPhotos(country.name.common),
     ]);
 
