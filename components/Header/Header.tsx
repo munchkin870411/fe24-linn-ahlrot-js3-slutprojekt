@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from './Header.module.css';
 
 import { auth } from '@/auth';
-import { loginWithGoogle, logout } from './authActions';
+import { loginWithGoogle, logout } from '../authActions';
 
 export default async function Header() {
   const session = await auth();

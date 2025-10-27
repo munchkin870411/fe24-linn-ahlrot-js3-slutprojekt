@@ -34,7 +34,7 @@
   align-self: start;
 }
 
-/* Tablet - 768px och uppåt */
+/* Tablet Breakpoint (768px+) */
 @media (min-width: 768px) {
   .page {
     padding: 1rem;
@@ -45,7 +45,7 @@
   }
 }
 
-/* Tablet - 768px och uppåt */
+/* Tablet Breakpoint (768px+) */
 @media (min-width: 768px) {
   .main {
     padding: 2rem;
@@ -63,7 +63,7 @@
   }
 }
 
-/* Desktop - 1024px och uppåt */
+/* Desktop Breakpoint (1024px+) */
 @media (min-width: 1024px) {
   .contentGrid {
     grid-template-columns: 1fr 350px;

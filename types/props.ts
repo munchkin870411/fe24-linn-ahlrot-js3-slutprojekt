@@ -42,18 +42,6 @@ export interface LoadingSpinnerProps {
 }
 
 /**
- * ErrorDisplay component props
- */
-export interface ErrorDisplayProps {
-  error: Error | null;
-  isNotFound?: boolean;
-  countryCode?: string;
-  onRetry?: () => void;
-  onGoBack?: () => void;
-  className?: string;
-}
-
-/**
  * WeatherDisplay component props
  */
 export interface WeatherDisplayProps {

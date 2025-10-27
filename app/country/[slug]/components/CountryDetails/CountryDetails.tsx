@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CountryDetailsComponentProps } from '@/types/props';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../../../../../components/LoadingSpinner/LoadingSpinner';
 import styles from './CountryDetails.module.css';
 
 export default function CountryDetails({ country, wikipediaData }: CountryDetailsComponentProps) {

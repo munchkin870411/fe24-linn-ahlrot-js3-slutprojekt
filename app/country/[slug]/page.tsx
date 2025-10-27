@@ -1,8 +1,8 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import CountryDetails from "@/components/CountryDetails";
-import CountryGallery from "@/components/CountryGallery";
-import WeatherDisplay from "@/components/WeatherDisplay";
+import CountryDetails from "@/app/country/[slug]/components/CountryDetails/CountryDetails";
+import CountryGallery from "@/app/country/[slug]/components/CountryGallery/CountryGallery";
+import WeatherDisplay from "@/app/country/[slug]/components/WeatherDisplay/WeatherDisplay";
 import { getCountryData } from "@/lib/services/countryDataService";
 import { CountryPageProps } from "@/types/pages";
 import styles from "./page.module.css";

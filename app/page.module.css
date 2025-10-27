@@ -145,7 +145,7 @@ a.secondary {
   }
 }
 
-/* Tablet - 768px och uppåt */
+/* Tablet Breakpoint (768px+) */
 @media (min-width: 768px) {
   .page {
     padding: 20px;

@@ -1,7 +1,7 @@
 import React from "react";
-import CountriesList from "../components/CountriesList";
-import SearchBar from "../components/SearchBar";
-import RegionFilter from "../components/RegionFilter";
+import CountriesList from "../components/CountriesList/CountriesList";
+import SearchBar from "../components/SearchBar/SearchBar";
+import RegionFilter from "../components/RegionFilter/RegionFilter";
 import styles from "./page.module.css";
 
 const HomePage = () => {
