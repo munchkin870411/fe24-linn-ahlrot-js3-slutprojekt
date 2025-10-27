@@ -7,9 +7,19 @@ const REST_COUNTRIES_BASE_URL = 'https://restcountries.com/v3.1';
  * Fetch all countries from REST Countries API
  */
 export async function fetchAllCountries(): Promise<Country[]> {
+  // Only request the fields we actually use
+  const fields = [
+    'name',
+    'cca2',
+    'cca3',
+    'region',
+    'capital',
+    'latlng',
+    'flags'
+  ].join(',');
   try {
-    // First try: /all endpoint with proper headers
-    const response = await fetch(`${REST_COUNTRIES_BASE_URL}/all`, {
+    // First try: /all endpoint with fields param
+    const response = await fetch(`${REST_COUNTRIES_BASE_URL}/all?fields=${fields}`, {
       headers: {
         'Accept': 'application/json',
         'User-Agent': 'Country Explorer App',
