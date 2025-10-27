@@ -1,3 +1,5 @@
+
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.css';
 
@@ -16,9 +18,23 @@ export default async function Header() {
         </Link>
 
         {session ? (
-          <form action={logout}>
-            <button className={styles.loginButton} type="submit">Log out</button>
-          </form>
+          <div className={styles.userBar}>
+            <form action={logout} style={{ display: 'inline' }}>
+              <button className={styles.loginButton} type="submit">Log out</button>
+            </form>
+            {session.user?.image && (
+              <Image
+                src={session.user.image}
+                alt={session.user.name || 'Profilbild'}
+                className={styles.profileImage}
+                width={32}
+                height={32}
+                style={{ objectFit: 'cover' }}
+                priority
+                unoptimized
+              />
+            )}
+          </div>
         ) : (
           <form action={loginWithGoogle}>
             <button className={styles.loginButton} type="submit">Log in</button>
