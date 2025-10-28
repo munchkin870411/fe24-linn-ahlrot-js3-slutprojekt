@@ -57,21 +57,23 @@ const CountriesList: React.FC = () => {
   }
 
   return (
-    <div className={styles.countriesList}>
-      <div className={styles.countriesGrid}>
+    <div className={styles.countriesList} aria-label="Countries list" role="region">
+      <div className={styles.countriesGrid} role="list" aria-label="Countries grid">
         {data.countries.map((country) => (
           <Link 
             key={country.cca3} 
             href={`/country/${country.cca3.toLowerCase()}`}
             className={styles.countryCardLink}
+            aria-label={`View details for ${country.name.common}`}
           >
-            <div className={styles.countryCard}>
+            <div className={styles.countryCard} role="listitem" aria-label={`${country.name.common} card`}>
               <Image 
                 src={country.flags.png} 
                 alt={`Flag of ${country.name.common}`} 
                 width={50} 
                 height={32} 
                 className={styles.countryFlag}
+                aria-label={`Flag of ${country.name.common}`}
               />
               <div className={styles.countryContent}>
                 <h3 className={styles.countryName}>{country.name.common}</h3>

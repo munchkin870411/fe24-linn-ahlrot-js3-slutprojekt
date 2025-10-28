@@ -26,7 +26,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
   return (
     <div className={styles.countryDetails}>
       <div className={styles.header}>
-        <Link href="/" className={styles.backButton}>
+        <Link href="/" className={styles.backButton} aria-label="Back to countries list">
           ← Back
         </Link>
       </div>
@@ -40,71 +40,72 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
             height={200}
             className={styles.flag}
             priority
+            aria-label={`Flag of ${country.name.common}`}
           />
         </div>
 
-        <div className={styles.infoSection}>
-          <h1 className={styles.countryName}>{country.name.common}</h1>
+        <div className={styles.infoSection} aria-labelledby="country-name-heading">
+          <h1 id="country-name-heading" className={styles.countryName}>{country.name.common}</h1>
           {country.name.official !== country.name.common && (
             <p className={styles.officialName}>Official name: {country.name.official}</p>
           )}
 
-          <div className={styles.infoGrid}>
-            <div className={styles.infoItem}>
+          <div className={styles.infoGrid} role="list" aria-label="Country facts">
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Region:</span>
               <span className={styles.value}>{country.region}</span>
             </div>
 
             {country.subregion && (
-              <div className={styles.infoItem}>
+              <div className={styles.infoItem} role="listitem">
                 <span className={styles.label}>Subregion:</span>
                 <span className={styles.value}>{country.subregion}</span>
               </div>
             )}
 
-            <div className={styles.infoItem}>
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Capital:</span>
               <span className={styles.value}>
                 {country.capital ? country.capital.join(', ') : 'N/A'}
               </span>
             </div>
 
-            <div className={styles.infoItem}>
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Population:</span>
               <span className={styles.value}>{formatNumber(country.population)}</span>
             </div>
 
-            <div className={styles.infoItem}>
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Area:</span>
               <span className={styles.value}>
                 {country.area ? `${formatNumber(country.area)} km²` : 'N/A'}
               </span>
             </div>
 
-            <div className={styles.infoItem}>
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Languages:</span>
               <span className={styles.value}>{formatLanguages(country.languages)}</span>
             </div>
 
-            <div className={styles.infoItem}>
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Currencies:</span>
               <span className={styles.value}>{formatCurrencies(country.currencies)}</span>
             </div>
 
             {country.timezones && country.timezones.length > 0 && (
-              <div className={styles.infoItem}>
+              <div className={styles.infoItem} role="listitem">
                 <span className={styles.label}>Timezones:</span>
                 <span className={styles.value}>{country.timezones.join(', ')}</span>
               </div>
             )}
 
-            <div className={styles.infoItem}>
+            <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Country code:</span>
               <span className={styles.value}>{country.cca2} / {country.cca3}</span>
             </div>
 
             {country.borders && country.borders.length > 0 && (
-              <div className={styles.infoItem}>
+              <div className={styles.infoItem} role="listitem">
                 <span className={styles.label}>Borders:</span>
                 <span className={styles.value}>{country.borders.join(', ')}</span>
               </div>
@@ -114,7 +115,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
       </div>
 
       {/* Wikipedia Section */}
-      <div className={styles.wikipediaSection}>
+  <div className={styles.wikipediaSection} aria-label="Wikipedia summary">
         {wikipediaData ? (
           <div className={styles.wikipediaContent}>
             <div className={styles.wikipediaText}>

@@ -20,24 +20,25 @@ export default async function Header() {
         {session ? (
           <div className={styles.userBar}>
             <form action={logout} style={{ display: 'inline' }}>
-              <button className={styles.loginButton} type="submit">Log out</button>
+              <button className={styles.loginButton} type="submit" aria-label="Log out">Log out</button>
             </form>
             {session.user?.image && (
               <Image
                 src={session.user.image}
-                alt={session.user.name || 'Profilbild'}
+                alt={session.user.name ? `Profile picture of ${session.user.name}` : 'Profile picture'}
                 className={styles.profileImage}
                 width={32}
                 height={32}
                 style={{ objectFit: 'cover' }}
                 priority
                 unoptimized
+                aria-label={session.user.name ? `Profile picture of ${session.user.name}` : 'Profile picture'}
               />
             )}
           </div>
         ) : (
           <form action={loginWithGoogle}>
-            <button className={styles.loginButton} type="submit">Log in</button>
+            <button className={styles.loginButton} type="submit" aria-label="Log in with Google">Log in</button>
           </form>
         )}
       </div>

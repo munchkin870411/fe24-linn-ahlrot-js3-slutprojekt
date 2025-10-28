@@ -11,7 +11,7 @@ interface CountryGalleryProps {
 export default function CountryGallery({ countryName, photos }: CountryGalleryProps) {
   if (photos.length === 0) {
     return (
-      <div className={styles.gallerySection}>
+      <div className={styles.gallerySection} aria-label={`Photo gallery of ${countryName}`}> 
         <h3 className={styles.galleryTitle}>Pictures of {countryName}</h3>
         <div className={styles.noPhotos}>
           <p>No photos available</p>
@@ -21,16 +21,17 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
   }
 
   return (
-    <div className={styles.gallerySection}>
+    <div className={styles.gallerySection} aria-label={`Photo gallery of ${countryName}`}> 
       <h3 className={styles.galleryTitle}>Pictures of {countryName}</h3>
-      <div className={styles.photoGrid}>
+      <div className={styles.photoGrid} role="list" aria-label={`Photos of ${countryName}`}>
         {photos.map((photo) => (
-          <div key={photo.id} className={styles.photoCard}>
+          <div key={photo.id} className={styles.photoCard} role="listitem">
             <a
               href={photo.links.html}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.photoLink}
+              aria-label={`View photo by ${photo.user.name} on Unsplash`}
             >
               <Image
                 src={photo.urls.small}
@@ -39,6 +40,7 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
                 height={300}
                 className={styles.photo}
                 loading="lazy"
+                aria-label={photo.alt_description || `Picture of ${countryName}`}
               />
               <div className={styles.photoOverlay}>
                 <div className={styles.photoCredit}>

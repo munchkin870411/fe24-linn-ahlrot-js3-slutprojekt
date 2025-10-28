@@ -40,9 +40,9 @@ export default function RegionFilter({
   };
 
   return (
-    <div className={`${styles.regionFilter} ${className}`}>
-      <h3 className={styles.filterTitle}>Filter by Region:</h3>
-      <div className={styles.filterButtons}>
+    <div className={`${styles.regionFilter} ${className}`} aria-label="Region filter" role="region">
+      <h3 className={styles.filterTitle} id="region-filter-title">Filter by Region:</h3>
+      <div className={styles.filterButtons} role="group" aria-labelledby="region-filter-title">
         {REGIONS.map((region) => (
           <button
             key={region.value}
@@ -51,6 +51,7 @@ export default function RegionFilter({
               currentRegion === region.value ? styles.active : ''
             }`}
             aria-pressed={currentRegion === region.value}
+            aria-label={region.label === 'All Regions' ? 'Show all regions' : `Filter by ${region.label}`}
             type="button"
           >
             {region.label}
