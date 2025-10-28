@@ -11,7 +11,11 @@ import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import styles from './CountriesList.module.css';
 import ErrorRetry from '../ErrorRetry';
 
-const CountriesList: React.FC = () => {
+interface CountriesListProps {
+  prefetch: boolean;
+}
+
+const CountriesList: React.FC<CountriesListProps> = ({ prefetch }) => {
   const searchParams = useSearchParams();
   
   const page = parseInt(searchParams.get('page') || '1', 10);
@@ -63,6 +67,7 @@ const CountriesList: React.FC = () => {
             href={`/country/${country.cca3.toLowerCase()}`}
             className={styles.countryCardLink}
             aria-label={`View details for ${country.name.common}`}
+            prefetch={prefetch}
           >
             <div className={styles.countryCard} role="listitem" aria-label={`${country.name.common} card`}>
               <Image 

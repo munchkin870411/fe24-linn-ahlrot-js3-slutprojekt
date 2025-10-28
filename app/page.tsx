@@ -12,12 +12,12 @@ const HomePage = async () => {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-          {!session && <LoginReminder />}
+        <LoginReminder show={!session} />
         <div className={styles.searchWrapper}>
           <SearchBar />
         </div>
         <RegionFilter />
-        <CountriesList />
+        <CountriesList prefetch={!!session} />
       </main>
     </div>
   );

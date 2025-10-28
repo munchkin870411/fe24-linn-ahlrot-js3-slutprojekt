@@ -13,7 +13,7 @@ import { auth } from "@/auth";
 const CountryPage = async ({ params }: CountryPageProps) => {
   const session = await auth();
   if (!session) {
-    redirect("/");
+    redirect("/?loginRequired=1");
   }
 
   const { slug } = await params;
