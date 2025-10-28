@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { UnsplashPhoto } from '@/lib/services/unsplashService';
+import { UnsplashPhoto } from '@/types/types';
 import styles from './CountryGallery.module.css';
 
 interface CountryGalleryProps {
@@ -48,6 +48,9 @@ export default function CountryGallery({ countryName, photos }: CountryGalleryPr
             </a>
           </div>
         ))}
+      </div>
+      <div className={styles.galleryFooter}>
+        <small>Photos from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash</a></small>
       </div>
     </div>
   );

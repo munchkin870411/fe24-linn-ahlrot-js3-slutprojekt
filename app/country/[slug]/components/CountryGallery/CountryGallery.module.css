@@ -1,3 +1,20 @@
+/* Gallery Footer */
+.galleryFooter {
+  margin-top: 1.5rem;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 0.95rem;
+}
+
+.galleryFooter a {
+  color: var(--primary-light, #0070f3);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.galleryFooter a:hover {
+  color: var(--primary, #0051a3);
+}
 /* Country Gallery Styles - Mobile First */
 
 .gallerySection {
