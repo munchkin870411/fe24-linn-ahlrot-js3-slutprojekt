@@ -9,6 +9,7 @@ import { fetchCountries } from '../../lib/services/countryDataService';
 import Pagination from '../Pagination/Pagination';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import styles from './CountriesList.module.css';
+import ErrorRetry from '../ErrorRetry';
 
 const CountriesList: React.FC = () => {
   const searchParams = useSearchParams();
@@ -36,10 +37,7 @@ const CountriesList: React.FC = () => {
 
   if (isError) {
     return (
-      <div>
-        <p>Error loading countries: {error?.message}</p>
-        <button onClick={() => window.location.reload()}>Try Again</button>
-      </div>
+      <ErrorRetry message="Could not load country data. Please try again." />
     );
   }
 

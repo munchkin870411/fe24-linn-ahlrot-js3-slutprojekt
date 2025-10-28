@@ -1,11 +1,18 @@
 
 import React from 'react';
+import ErrorRetry from '@/components/ErrorRetry';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CountryDetailsComponentProps } from '@/types/props';
 import styles from './CountryDetails.module.css';
 
 export default function CountryDetails({ country, wikipediaData }: CountryDetailsComponentProps) {
+  if (!country) {
+    return (
+        <ErrorRetry message="Could not load country data. Please try again." />
+    );
+  }
+
   const formatNumber = (num?: number) => {
     if (!num) return 'N/A';
     return new Intl.NumberFormat('sv-SE').format(num);
@@ -55,55 +62,46 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
               <span className={styles.label}>Region:</span>
               <span className={styles.value}>{country.region}</span>
             </div>
-
             {country.subregion && (
               <div className={styles.infoItem} role="listitem">
                 <span className={styles.label}>Subregion:</span>
                 <span className={styles.value}>{country.subregion}</span>
               </div>
             )}
-
             <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Capital:</span>
               <span className={styles.value}>
                 {country.capital ? country.capital.join(', ') : 'N/A'}
               </span>
             </div>
-
             <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Population:</span>
               <span className={styles.value}>{formatNumber(country.population)}</span>
             </div>
-
             <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Area:</span>
               <span className={styles.value}>
                 {country.area ? `${formatNumber(country.area)} km²` : 'N/A'}
               </span>
             </div>
-
             <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Languages:</span>
               <span className={styles.value}>{formatLanguages(country.languages)}</span>
             </div>
-
             <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Currencies:</span>
               <span className={styles.value}>{formatCurrencies(country.currencies)}</span>
             </div>
-
             {country.timezones && country.timezones.length > 0 && (
               <div className={styles.infoItem} role="listitem">
                 <span className={styles.label}>Timezones:</span>
                 <span className={styles.value}>{country.timezones.join(', ')}</span>
               </div>
             )}
-
             <div className={styles.infoItem} role="listitem">
               <span className={styles.label}>Country code:</span>
               <span className={styles.value}>{country.cca2} / {country.cca3}</span>
             </div>
-
             {country.borders && country.borders.length > 0 && (
               <div className={styles.infoItem} role="listitem">
                 <span className={styles.label}>Borders:</span>
@@ -115,7 +113,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
       </div>
 
       {/* Wikipedia Section */}
-  <div className={styles.wikipediaSection} aria-label="Wikipedia summary">
+      <div className={styles.wikipediaSection} aria-label="Wikipedia summary">
         {wikipediaData ? (
           <div className={styles.wikipediaContent}>
             <div className={styles.wikipediaText}>
@@ -143,10 +141,11 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
           </div>
         ) : (
           <div className={styles.noWikipediaData}>
-            <p>No additional information available from Wikipedia.</p>
+            <ErrorRetry message="No additional information available from Wikipedia." />
           </div>
         )}
       </div>
     </div>
   );
+// ...existing code...
 }
