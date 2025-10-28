@@ -16,7 +16,7 @@ export async function fetchCountries(params: FetchCountriesParams = {}): Promise
   // Simple parameter validation and defaults
   const validatedParams = {
     page: Math.max(1, params?.page || 1),
-    pageSize: Math.min(300, Math.max(1, params?.pageSize || 12)),
+    pageSize: Math.min(300, Math.max(1, params?.pageSize || 7)),
     search: params?.search?.trim(),
     region: params?.region?.trim(),
   };

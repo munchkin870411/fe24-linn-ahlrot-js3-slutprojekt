@@ -1,26 +1,11 @@
-'use client';
 
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { CountryDetailsComponentProps } from '@/types/props';
-import LoadingSpinner from '../../../../../components/LoadingSpinner/LoadingSpinner';
 import styles from './CountryDetails.module.css';
 
 export default function CountryDetails({ country, wikipediaData }: CountryDetailsComponentProps) {
-  const wikipediaLoading = false; // Data comes from props now
-  const wikipediaError = false;  // No error state needed
-
-  // Fallback loading state if no country data
-  if (!country) {
-    return (
-      <LoadingSpinner 
-        message="Loading country information..." 
-        size="large"
-      />
-    );
-  }
-
   const formatNumber = (num?: number) => {
     if (!num) return 'N/A';
     return new Intl.NumberFormat('sv-SE').format(num);
@@ -130,19 +115,7 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
 
       {/* Wikipedia Section */}
       <div className={styles.wikipediaSection}>
-        
-        {wikipediaLoading ? (
-          <div className={styles.loadingState}>
-            <LoadingSpinner 
-              message="Loading information from Wikipedia..." 
-              size="medium"
-            />
-          </div>
-        ) : wikipediaError ? (
-          <div className={styles.noWikipediaData}>
-            <p>No additional information available from Wikipedia.</p>
-          </div>
-        ) : wikipediaData ? (
+        {wikipediaData ? (
           <div className={styles.wikipediaContent}>
             <div className={styles.wikipediaText}>
               {wikipediaData.description && (
@@ -150,13 +123,11 @@ export default function CountryDetails({ country, wikipediaData }: CountryDetail
                   <strong>{wikipediaData.description}</strong>
                 </p>
               )}
-              
               {wikipediaData.extract && (
                 <div className={styles.wikipediaExtract}>
                   <p>{wikipediaData.extract}</p>
                 </div>
               )}
-              
               <div className={styles.wikipediaLink}>
                 <a 
                   href={wikipediaData.content_urls.desktop.page}
