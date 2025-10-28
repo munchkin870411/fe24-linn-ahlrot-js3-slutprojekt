@@ -19,7 +19,7 @@ const CountriesList: React.FC = () => {
   const search = searchParams.get('search') || undefined;
   const region = searchParams.get('region') || undefined;
 
-  const { data, isLoading, error, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['countries', { page, pageSize, search, region }],
     queryFn: () => fetchCountries({ page, pageSize, search, region }),
     staleTime: 5 * 60 * 1000,

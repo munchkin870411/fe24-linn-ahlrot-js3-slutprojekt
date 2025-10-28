@@ -10,7 +10,7 @@ A travel app built with Next.js, TanStack Query and Zod. The app displays a pagi
   - Current weather (Open-Meteo API)
   - Image gallery (Unsplash API)
   - Wikipedia summary with source attribution
-- **Loading spinners and skeletons** for all major data fetches
+- **Loading spinner** for all major data fetches
 - **Error handling** with clear messages and retry options
 - **Accessibility**: semantic HTML, ARIA labels, keyboard navigation, alt texts
 - **Responsive design**: mobile-first, with breakpoints for tablet and desktop
@@ -50,7 +50,7 @@ A travel app built with Next.js, TanStack Query and Zod. The app displays a pagi
    npm install
    ```
 3. **Set up environment variables:**
-   - Create a `.env.local` file and add your API keys (see `.env.example` if available).
+   - Create a `.env.local` file and add your API keys (see `env.example`).
 4. **Start the development server:**
    ```bash
    npm run dev
@@ -61,7 +61,7 @@ A travel app built with Next.js, TanStack Query and Zod. The app displays a pagi
 ## Deployment
 
 The app is deployed on Vercel:
-[https://your-app-name.vercel.app](https://your-app-name.vercel.app)
+[https://fe24-linn-ahlrot-js3-slutprojekt.vercel.app/](https://fe24-linn-ahlrot-js3-slutprojekt.vercel.app/)
 
 ## Accessibility & Best Practices
 
