@@ -7,13 +7,13 @@ import LoginReminder from "@/components/LoginReminder/LoginReminder";
 import { auth } from "@/auth";
 
 
-const HomePage = () => {
-  const session = auth();
+const HomePage = async () => {
+  const session = await auth();
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <div className={styles.searchWrapper}>
           {!session && <LoginReminder />}
+        <div className={styles.searchWrapper}>
           <SearchBar />
         </div>
         <RegionFilter />
